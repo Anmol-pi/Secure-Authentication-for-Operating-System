@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LinuxAuthGuard Vault (Admin)
+GenericName=File Vault Manager (Administrator)
+Comment=Manage vault with full administrator access — requires password
+Exec=/usr/lib/linuxauthguard/file_auth/vault_gui_sudo_launcher.sh
+Icon=linuxauthguard
+Terminal=false
+Categories=Security;System;
+Keywords=vault;password;security;admin;root;protect;file;
+StartupNotify=true
+StartupWMClass=com.linuxauthguard.vault
