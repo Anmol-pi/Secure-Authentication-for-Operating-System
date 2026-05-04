@@ -1,0 +1,23 @@
+[Unit]
+Description=LinuxAuthGuard Sudo Tracker & Event Logger
+After=local-fs.target
+Before=sudo.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mkdir -p /run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard
+ExecStart=/usr/bin/python3 /usr/lib/linuxauthguard/sudo_tracker/sudo_logger.py
+Restart=on-failure
+RestartSec=3
+User=root
+MemoryMax=15M
+# PrivateTmp=true would isolate /run and break the UNIX socket at
+# /run/linuxauthguard/sudo_events.sock — must be false
+PrivateTmp=false
+# ProtectSystem=strict conflicts with writing to /var/lib and /var/log
+# even when ReadWritePaths is set, on some systemd versions
+ProtectSystem=false
+ReadWritePaths=/run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard
+
+[Install]
+WantedBy=multi-user.target
