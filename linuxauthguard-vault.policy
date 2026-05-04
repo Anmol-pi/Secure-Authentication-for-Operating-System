@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+
+<policyconfig>
+
+  <vendor>LinuxAuthGuard</vendor>
+  <vendor_url>https://github.com/linuxauthguard</vendor_url>
+
+  <!--
+    Allows pkexec to run lag-vault-admin as root.
+    Triggered by "LinuxAuthGuard Vault (Admin)" in the app menu.
+    auth_self = prompts for the current user's own password.
+  -->
+  <action id="com.linuxauthguard.vault.admin">
+
+    <description>Open LinuxAuthGuard Vault Manager as Administrator</description>
+    <message>Enter your password to open the Vault Manager with full administrator access.</message>
+    <icon_name>linuxauthguard</icon_name>
+
+    <defaults>
+      <allow_any>auth_self</allow_any>
+      <allow_active>auth_self</allow_active>
+      <allow_inactive>auth_self</allow_inactive>
+    </defaults>
+
+    <!-- Must match the installed path of the compiled binary exactly -->
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/linuxauthguard/file_auth/lag-vault-admin</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+
+  </action>
+
+</policyconfig>
