@@ -1,0 +1,19 @@
+[Unit]
+Description=LinuxAuthGuard ML Watcher Service
+After=linuxauthguard-file-auth.service local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mkdir -p /run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard
+ExecStart=/usr/bin/python3 /usr/lib/linuxauthguard/ml/ml_service.py
+Restart=on-failure
+RestartSec=5
+User=root
+MemoryMax=60M
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard
+
+[Install]
+WantedBy=multi-user.target
