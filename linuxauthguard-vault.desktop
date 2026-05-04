@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LinuxAuthGuard Vault
+GenericName=File Vault Manager
+Comment=View password-protected files and access logs
+Exec=/usr/lib/linuxauthguard/file_auth/vault_gui_launcher.sh
+Icon=linuxauthguard
+Terminal=false
+Categories=Security;System;
+Keywords=vault;password;security;protect;file;
+StartupNotify=true
+StartupWMClass=com.linuxauthguard.vault
