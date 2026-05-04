@@ -1,0 +1,31 @@
+[Unit]
+Description=LinuxAuthGuard File Authentication Daemon
+After=network.target local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+# Create required directories before starting
+ExecStartPre=/bin/mkdir -p /run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard /run/linuxauthguard/mounts
+# fuse_vault requires: <source_path> <mount_point>
+# source = the real protected directory, mount = the FUSE overlay path
+ExecStart=/usr/lib/linuxauthguard/fuse_vault \
+    /var/lib/linuxauthguard \
+    /run/linuxauthguard/mounts
+Restart=on-failure
+RestartSec=3
+User=root
+# FUSE needs CAP_SYS_ADMIN to mount
+CapabilityBoundingSet=CAP_SYS_ADMIN
+AmbientCapabilities=CAP_SYS_ADMIN
+NoNewPrivileges=false
+# Do NOT use PrivateTmp — it breaks /run access for FUSE mounts
+PrivateTmp=false
+# Do NOT use ProtectSystem — fuse_vault writes to /var/lib and /run
+ProtectSystem=false
+# Allow access to all paths the daemon needs
+ReadWritePaths=/run/linuxauthguard /var/lib/linuxauthguard /var/log/linuxauthguard /etc/linuxauthguard
+MemoryMax=25M
+
+[Install]
+WantedBy=multi-user.target
