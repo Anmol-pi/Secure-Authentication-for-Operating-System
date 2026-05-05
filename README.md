@@ -73,35 +73,6 @@ sudo ./install.sh --uninstall
 
 ## Components in Detail
 
-### Greeter (`greeter/`)
-
-A GTK4 display greeter for use with a display manager (e.g. greetd). Features:
-
-- Frosted-glass login card with animated clock
-- Touch-first gesture navigation (swipe to switch users)
-- Shake animation on failed auth
-- TOTP MFA second-factor stage
-- Lockout countdown display
-
-**Files:**
-- `greeter_main.py` — entry point, arg parsing
-- `greeter_ui.py` — GTK4 window, login card, MFA stage
-- `touch_handler.py` — GestureClick/GestureSwipe/GestureDrag controllers
-- `pam_bridge.py` — PAM authentication bridge with TOTP detection
-- `assets/style.css` — GTK4 CSS with frosted glass + animations
-
-**Usage:**
-```bash
-# Configure as greetd command:
-# /etc/greetd/config.toml:
-#   [terminal]
-#   vt = 1
-#   [default_session]
-#   command = "python3 /usr/lib/linuxauthguard/greeter/greeter_main.py"
-
-python3 greeter/greeter_main.py --test
-```
-
 ### File Auth (`file_auth/`)
 
 A FUSE overlay filesystem that intercepts access to protected files and folders, requiring per-file password authentication.
@@ -310,9 +281,3 @@ make clean
 | `/var/log/linuxauthguard/ml_service.log` | ML service log |
 | `/run/linuxauthguard/vault_auth.sock` | FUSE ↔ GUI IPC socket |
 | `/run/linuxauthguard/sudo_events.sock` | PAM hook → sudo_logger socket |
-
----
-
-## License
-
-MIT — see LICENSE file.
