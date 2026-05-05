@@ -1,0 +1,33 @@
+# LinuxAuthGuard Python requirements
+# Install with: pip install -r requirements.txt --break-system-packages
+
+# Core auth / hashing
+argon2-cffi>=23.1.0
+python-pam>=2.0.2
+pyotp>=2.9.0
+
+# FUSE / filesystem
+fusepy>=3.0.1
+
+# GTK4 UI (install via system package manager, not pip)
+# apt: python3-gi gir1.2-gtk-4.0 gir1.2-notify-0.7
+# PyGObject>=3.44.0
+
+# inotify
+inotify-simple>=1.3.5
+
+# ML / classification
+scikit-learn>=1.4.0
+numpy>=1.26.0
+
+# Web dashboard
+flask>=3.0.0
+
+# SQLite (stdlib — no extra install needed)
+# sqlite3
+
+# Notifications
+notify2>=0.3.1         # fallback; primary uses gi.repository.Notify
+
+# Build / packaging helpers (dev only)
+build>=1.1.0
