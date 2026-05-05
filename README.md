@@ -1,7 +1,7 @@
 # LinuxAuthGuard
 
 A production-grade Linux Secure Authentication System providing a GTK4 display greeter, per-file vault authentication, ML-based sensitivity classification, and sudo activity tracking — all integrated via PAM.
-
+ 
 ---
 
 ## Architecture Overview
