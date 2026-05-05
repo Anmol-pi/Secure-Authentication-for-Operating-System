@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Shield background -->
+  <path d="M32 4 L56 14 L56 34 C56 48 44 58 32 62 C20 58 8 48 8 34 L8 14 Z"
+        fill="#1a1a2e" stroke="#7c4dff" stroke-width="2"/>
+  <!-- Padlock body -->
+  <rect x="22" y="32" width="20" height="16" rx="3" fill="#7c4dff"/>
+  <!-- Padlock shackle -->
+  <path d="M26 32 L26 26 C26 21 38 21 38 26 L38 32"
+        fill="none" stroke="#7c4dff" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Keyhole -->
+  <circle cx="32" cy="39" r="3" fill="#1a1a2e"/>
+  <rect x="30.5" y="39" width="3" height="5" rx="1" fill="#1a1a2e"/>
+</svg>
